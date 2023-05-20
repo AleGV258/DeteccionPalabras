@@ -78,3 +78,4 @@ xocoyote_f2 = Caracteristicas(xocoyoteBYN2);
 xocoyote_f3 = Caracteristicas(xocoyoteBYN3);
 xocoyote_f4 = Caracteristicas(xocoyoteBYN4);
 
+prueba = SepararLetras(xocoyoteBYN1);
