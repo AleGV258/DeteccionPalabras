@@ -1,3 +1,9 @@
+% Tópico II
+% Integrantes:
+%     - García Vargas Michell Alejandro
+%     - León Paulin Daniel
+% Grupo: 30           8vo. Semestre
+
 function [imagenDelimitada] = SepararLetras(imagen_umbralizada)
     %Rellenar agujeros
     imgRellenada = imfill(~imagen_umbralizada, 'holes');

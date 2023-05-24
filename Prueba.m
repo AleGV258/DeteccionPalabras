@@ -3,6 +3,7 @@ clear all;
 close all;
 
 imagen = imread('./entradas/xocoyote1.jpg');
+
 imagen_gris = rgb2gray(imagen);
 
 imgBinaria = ~imbinarize(imagen_gris, 0.5);

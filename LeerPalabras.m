@@ -1,81 +1,42 @@
+% Tópico II
+% Integrantes:
+%     - García Vargas Michell Alejandro
+%     - León Paulin Daniel
+% Grupo: 30           8vo. Semestre
+
 clc;
 clear all;
 close all;
 
-murcielago1 = imread('./entradas/murcielago1.jpg');
-murcielago2 = imread('./entradas/murcielago2.jpg');
-murcielago3 = imread('./entradas/murcielago3.jpg');
-murcielago4 = imread('./entradas/murcielago4.jpg');
-
-abuelito1 = imread('./entradas/abuelito1.jpg');
-abuelito2 = imread('./entradas/abuelito2.jpg');
-abuelito3 = imread('./entradas/abuelito3.jpg');
-abuelito4 = imread('./entradas/abuelito4.jpg');
-
-xocoyote1 = imread('./entradas/xocoyote1.jpg');
-xocoyote2 = imread('./entradas/xocoyote2.jpg');
-xocoyote3 = imread('./entradas/xocoyote3.jpg');
-xocoyote4 = imread('./entradas/xocoyote4.jpg');
-
 nivel = 0.5;
-murcielagoBYN1 = im2bw(murcielago1, nivel);
-murcielagoBYN2 = im2bw(murcielago2, nivel);
-murcielagoBYN3 = im2bw(murcielago3, 0.3);
-murcielagoBYN4 = im2bw(murcielago4, 0.3);
 
-abuelitoBYN1 = im2bw(abuelito1, nivel);
-abuelitoBYN2 = im2bw(abuelito2, nivel);
-abuelitoBYN3 = im2bw(abuelito3, 0.3);
-abuelitoBYN4 = im2bw(abuelito4, 0.3);
+[murcielago1, murcielagoBYN1, murcielago_f1] = LeerImgByN('./entradas/murcielago1.jpg', nivel);
+[murcielago2, murcielagoBYN2, murcielago_f2] = LeerImgByN('./entradas/murcielago2.jpg', nivel);
+[murcielago3, murcielagoBYN3, murcielago_f3] = LeerImgByN('./entradas/murcielago3.jpg', nivel);
+[murcielago4, murcielagoBYN4, murcielago_f4] = LeerImgByN('./entradas/murcielago4.jpg', nivel);
 
-xocoyoteBYN1 = im2bw(xocoyote1, nivel);
-xocoyoteBYN2 = im2bw(xocoyote2, nivel);
-xocoyoteBYN3 = im2bw(xocoyote3, 0.3);
-xocoyoteBYN4 = im2bw(xocoyote4, 0.3);
+[abuelito1, abuelitoBYN1, abuelito_f1] = LeerImgByN('./entradas/abuelito1.jpg', nivel);
+[abuelito2, abuelitoBYN2, abuelito_f2] = LeerImgByN('./entradas/abuelito2.jpg', nivel);
+[abuelito3, abuelitoBYN3, abuelito_f3] = LeerImgByN('./entradas/abuelito3.jpg', nivel);
+[abuelito4, abuelitoBYN4, abuelito_f4] = LeerImgByN('./entradas/abuelito4.jpg', nivel);
 
-figure;
-subplot(3, 2, 1);
-imagesc(murcielagoBYN1);
-subplot(3, 2, 2);
-imagesc(murcielagoBYN2);
-subplot(3, 2, 3);
-imagesc(abuelitoBYN1);
-subplot(3, 2, 4);
-imagesc(abuelitoBYN2);
-subplot(3, 2, 5);
-imagesc(xocoyoteBYN1);
-subplot(3, 2, 6);
-imagesc(xocoyoteBYN2);
-colormap(gray);
+[xocoyote1, xocoyoteBYN1, xocoyote_f1] = LeerImgByN('./entradas/xocoyote1.jpg', nivel);
+[xocoyote2, xocoyoteBYN2, xocoyote_f2] = LeerImgByN('./entradas/xocoyote2.jpg', nivel);
+[xocoyote3, xocoyoteBYN3, xocoyote_f3] = LeerImgByN('./entradas/xocoyote3.jpg', nivel);
+[xocoyote4, xocoyoteBYN4, xocoyote_f4] = LeerImgByN('./entradas/xocoyote4.jpg', nivel);
 
-figure;
-subplot(3, 2, 1);
-imagesc(murcielagoBYN3);
-subplot(3, 2, 2);
-imagesc(murcielagoBYN4);
-subplot(3, 2, 3);
-imagesc(abuelitoBYN3);
-subplot(3, 2, 4);
-imagesc(abuelitoBYN4);
-subplot(3, 2, 5);
-imagesc(xocoyoteBYN3);
-subplot(3, 2, 6);
-imagesc(xocoyoteBYN4);
-colormap(gray);
+etiqueta = [1; 1; 1; 1];
+caracteristicas = [murcielago_f1; murcielago_f2; murcielago_f3; murcielago_f4];
+memoria = [caracteristicas etiqueta];
 
-muricelago_f1 = Caracteristicas(murcielagoBYN1);
-muricelago_f2 = Caracteristicas(murcielagoBYN2);
-muricelago_f3 = Caracteristicas(murcielagoBYN1);
-muricelago_f4 = Caracteristicas(murcielagoBYN4);
+etiqueta = [2; 2; 2; 2];
+caracteristicas = [abuelito_f1; abuelito_f2; abuelito_f3; abuelito_f4];
+memoria = [memoria; caracteristicas etiqueta];
 
-abuelito_f1 = Caracteristicas(abuelitoBYN1);
-abuelito_f2 = Caracteristicas(abuelitoBYN2);
-abuelito_f3 = Caracteristicas(abuelitoBYN3);
-abuelito_f4 = Caracteristicas(abuelitoBYN4);
+etiqueta = [3; 3; 3; 3];
+caracteristicas = [xocoyote_f1; xocoyote_f2; xocoyote_f3; xocoyote_f4];
+memoria = [memoria; caracteristicas etiqueta];
 
-xocoyote_f1 = Caracteristicas(xocoyoteBYN1);
-xocoyote_f2 = Caracteristicas(xocoyoteBYN2);
-xocoyote_f3 = Caracteristicas(xocoyoteBYN3);
-xocoyote_f4 = Caracteristicas(xocoyoteBYN4);
+save('./salidas/memoria_palabras.mat');
 
-prueba = SepararLetras(xocoyoteBYN1);
+% SepararLetras(xocoyoteBYN1);
