@@ -4,10 +4,13 @@
 %     - León Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
-function [imagen, imagenBYN, imagenCaracteristicas] = LeerImgByN(ruta, nivel)
+function [imagen, imagenBYN, imagenCaracteristicas] = LeerImgByN(ruta, nivel, nombre, modo)
     imagen = imread(ruta);
     imagenBYN = im2bw(imagen, nivel);
     imagenCaracteristicas = Caracteristicas(imagenBYN);
+    if(modo == true)
+        SepararLetras(imagenBYN, nombre);
+    end
     
     % Plotear
 %     figure;

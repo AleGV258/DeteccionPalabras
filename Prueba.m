@@ -2,7 +2,7 @@ clc;
 clear all;
 close all;
 
-imagen = imread('./entradas/xocoyote1.jpg');
+imagen = imread('./entradas/abuelito4.jpg');
 
 imagen_gris = rgb2gray(imagen);
 
@@ -14,7 +14,7 @@ imgRellenada = imfill(imgBinaria, 'holes');
 figure; imshow(imgRellenada);
 
 % Eliminar ruido
-imgSinRuido = bwareaopen(imgRellenada, 9000);
+imgSinRuido = bwareaopen(imgRellenada, 2000);
 figure, imshow(imgSinRuido);
 
 % Delimitar objetos
@@ -25,7 +25,7 @@ bbox = cat(1, stats.BoundingBox);
 for i = 1:size(stats)
     boundingBox = stats(i).BoundingBox; % [x, y, width, height]
     letra = imgBinaria(boundingBox(2):boundingBox(2) + boundingBox(4) - 1, boundingBox(1):boundingBox(1) + boundingBox(3) - 1, :);
-    figure, imshow(letra);
+    % figure, imshow(letra);
 end
 
 imagenDelimitada = insertShape(imagen, 'rectangle', bbox, 'LineWidth', 4);
