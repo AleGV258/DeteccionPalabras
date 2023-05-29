@@ -23,7 +23,7 @@ function [imagenDelimitada] = SepararLetras(imagen_umbralizada, palabra)
         boundingBox = stats(i).BoundingBox; % [x, y, width, height]
         letra = imagen_umbralizada(boundingBox(2):boundingBox(2) + boundingBox(4) - 1, boundingBox(1):boundingBox(1) + boundingBox(3) - 1, :);
         % figure, imshow(letra);
-        imwrite(letra, strcat('./salidas/', palabra, '/', num2str(i), '.jpg'));
+        % imwrite(letra, strcat('./salidas/', palabra, '/', num2str(i), '.jpg'));
     end
 
     imagenDelimitada = insertShape(im2uint8(imagen_umbralizada), 'rectangle', bbox, 'LineWidth', 4, 'Color', 'red');

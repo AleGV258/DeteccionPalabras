@@ -7,7 +7,12 @@
 function [imagen, imagenBYN, imagenCaracteristicas] = LeerImgByN(ruta, nivel, nombre, modo)
     imagen = imread(ruta);
     imagenBYN = im2bw(imagen, nivel);
-    imagenCaracteristicas = Caracteristicas(imagenBYN);
+    %% Función de Caracteristicas
+    img = double(imagen);
+    promedio = mean(mean(img));
+    desv_estandar = std((std(img)));
+    imagenCaracteristicas = [promedio, desv_estandar];
+    %% Para Separar las Letras
     if(modo == true)
         SepararLetras(imagenBYN, nombre);
     end
