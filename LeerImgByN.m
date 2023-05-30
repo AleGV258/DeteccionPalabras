@@ -5,10 +5,10 @@
 % Grupo: 30           8vo. Semestre
 
 function [imagen, imagenBYN, imagenCaracteristicas] = LeerImgByN(ruta, nivel, nombre, modo)
-    imagen = imread(ruta);
+    imagen = imresize(imread(ruta), [1024 1024]);
     imagenBYN = im2bw(imagen, nivel);
     %% Función de Caracteristicas
-    img = double(imagen);
+    img = double(imagenBYN);
     promedio = mean(mean(img));
     desv_estandar = std((std(img)));
     imagenCaracteristicas = [promedio, desv_estandar];

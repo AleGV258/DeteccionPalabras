@@ -1,7 +1,7 @@
-% Tópico II
+% Tï¿½pico II
 % Integrantes:
-%     - García Vargas Michell Alejandro
-%     - León Paulin Daniel
+%     - Garcï¿½a Vargas Michell Alejandro
+%     - Leï¿½n Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
 clc;
@@ -60,27 +60,59 @@ for i = 1:cantidad_archivos
 
     switch clase
         case 1
-            disp("m");
-        case 2
-            disp("u");
-        case 3
-            disp("r");
-        case 4
-            disp("c");
-        case 5
-            disp(".");
-        case 6
-            disp("i");
-        case 7
-            disp("e");
-        case 8
-            disp("l");
-        case 9
             disp("a");
-        case 10
+        case 2
+            disp("b");
+        case 3
+            disp("c");
+        case 4
+            disp("d");
+        case 5
+            disp("e");
+        case 6
+            disp("f");
+        case 7
             disp("g");
+        case 8
+            disp("h");
+        case 9
+            disp("i");
+        case 10
+            disp("j");
         case 11
+            disp("k");
+        case 12
+            disp("l");
+        case 13
+            disp("m");
+        case 14
+            disp("n");
+        case 15
+            disp("Ã±");
+        case 16
             disp("o");
+        case 17
+            disp("p");
+        case 18
+            disp("q");
+        case 19
+            disp("r");
+        case 20
+            disp("s");
+        case 21
+            disp("t");
+        case 22
+            disp("u");
+        case 23
+            disp("v");
+        case 24
+            disp("w");
+        case 25
+            disp("x");
+        case 26
+            disp("y");
+        case 27
+            disp("z");
     end
 end
 

@@ -1,16 +1,16 @@
-% Tópico II
+% Tï¿½pico II
 % Integrantes:
-%     - García Vargas Michell Alejandro
-%     - León Paulin Daniel
+%     - Garcï¿½a Vargas Michell Alejandro
+%     - Leï¿½n Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
 clc;
 clear all;
 close all;
 
-%% Identificación y Lectura de Palabras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Identificaciï¿½n y Lectura de Palabras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-nivel = 0.4; % Este es el valor mas acertado que encontré
+nivel = 0.4;
 
 [murcielago1, murcielagoBYN1, murcielago_f1] = LeerImgByN('./entradas/murcielago1.jpg', nivel, 'murcielago1', true);
 [murcielago2, murcielagoBYN2, murcielago_f2] = LeerImgByN('./entradas/murcielago2.jpg', nivel, 'murcielago2', true);
@@ -41,7 +41,7 @@ memoria = [memoria; caracteristicas etiqueta];
 
 save('./salidas/memoria_palabras.mat');
 
-%% Identificación y Lectura de Letras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Identificaciï¿½n y Lectura de Letras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ruta = './salidas/murcielago';
 
@@ -73,4 +73,3 @@ for i = 1:cantidad_archivos1
 end
 
 save('./salidas/memoria_letras.mat');
-
