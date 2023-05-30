@@ -4,24 +4,16 @@
 %     - León Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
-function [imagen, imagenBYN, imagenCaracteristicas] = LeerImgByN(ruta, nivel, nombre, modo)
-    imagen = imresize(imread(ruta), [1024 1024]);
-    imagenBYN = im2bw(imagen, nivel);
-    %% Función de Caracteristicas
-    img = double(imagenBYN);
-    promedio = mean(mean(img));
-    desv_estandar = std((std(img)));
-    imagenCaracteristicas = [promedio, desv_estandar];
-    %% Para Separar las Letras
+function [imagen, imagenBYN, imagenCaracteristicas, arrayLetras] = LeerImgByN(ruta, nivel, modo)
     if(modo == true)
-        SepararLetras(imagenBYN, nombre);
+        imagen = imread(ruta);
+        imagenBYN = im2bw(imagen, nivel);
+        imagenCaracteristicas = Caracteristicas(imagenBYN);
+        [imagenDelimitada, arrayLetras] = SepararLetras(imagenBYN);
+    else
+        imagen = imresize(imread(ruta), [512 512]);
+        imagenBYN = im2bw(imagen, nivel);
+        imagenCaracteristicas = Caracteristicas(imagenBYN);
     end
-    
-    % Plotear
-%     figure;
-%     subplot(2, 1, 1);
-%     imagesc(imagen);
-%     subplot(2, 1, 2);
-%     imagesc(imagenBYN);
-%     colormap(gray);
+    clc;
 end

@@ -1,118 +1,97 @@
-% Tï¿½pico II
+% Tópico II
 % Integrantes:
-%     - Garcï¿½a Vargas Michell Alejandro
-%     - Leï¿½n Paulin Daniel
+%     - García Vargas Michell Alejandro
+%     - León Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
 clc;
 clear all;
 close all;
 
-%% Diferenciar Palabras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-nivel = 0.4;
-
-load('./salidas/memoria_palabras.mat');
-
-[palabra, palabraByN, palabra_f] = LeerImgByN('./entradas/pruebas/xocoyotePrueba4.jpg', nivel, 'prueba_palabra', false);
-
-valores = memoria(:, 1:2);
-etiqueta = memoria(:, 3);
-
-for i = 1:size(valores, 1)
-    diferencia(i, :) = sum(abs(valores(i, :) - palabra_f));
-end
-
-encontrado = find(diferencia == min(diferencia));
-clase = etiqueta(encontrado);
-
-switch clase
-    case 1
-        disp("murcielago");
-    case 2
-        disp("abuelito");
-    case 3
-        disp("xocoyote");
-end
-
 %% Diferenciar Letras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 load('./salidas/memoria_letras.mat');
 
-ruta = './salidas/murcielago1/';
-ruta_letras = dir(ruta);
-
-% Cuenta la cantidad de archivos (excluyendo directorios)
-cantidad_archivos = sum(~[ruta_letras.isdir]);
-
+nivel = 0.4;
 valores = memoria(:, 1:2);
 etiqueta = memoria(:, 3);
 
-for i = 1:cantidad_archivos
-    [letra, letraByN, letra_f] = LeerImgByN(strcat(ruta, num2str(i), '.jpg'), nivel, 'prueba_letra', false);
+ruta = './entradas/SOFTWARE.jpg';
+[letraPalabra, letraPalabra_ByN, letraPalabra_f, arrayLetras] = LeerImgByN(ruta, nivel, true);
 
-    for i = 1:size(valores, 1)
-        diferencia(i, :) = sum(abs(valores(i, :) - letra_f));
+palabra = '';
+for i=1:size(arrayLetras, 1)
+    % imshow(~arrayLetras{i});
+    letra_f = Caracteristicas(~arrayLetras{i});
+    diferencia = zeros(size(valores, 1), 1);  % Inicializar diferencia en cada iteración del bucle externo
+    for j=1:size(valores, 1)
+        diferencia(j) = sum(abs(valores(j, :) - letra_f));
     end
-
+    
     encontrado = find(diferencia == min(diferencia));
     clase = etiqueta(encontrado);
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % NO IDENTIFICA BIEN LAS LETRAS %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
     switch clase
         case 1
-            disp("a");
+            palabra = strcat(palabra, 'A');
         case 2
-            disp("b");
+            palabra = strcat(palabra, 'B');
         case 3
-            disp("c");
+            palabra = strcat(palabra, 'C');
         case 4
-            disp("d");
+            palabra = strcat(palabra, 'D');
         case 5
-            disp("e");
+            palabra = strcat(palabra, 'E');
         case 6
-            disp("f");
+            palabra = strcat(palabra, 'F');
         case 7
-            disp("g");
+            palabra = strcat(palabra, 'G');
         case 8
-            disp("h");
+            palabra = strcat(palabra, 'H');
         case 9
-            disp("i");
+            palabra = strcat(palabra, 'I');
         case 10
-            disp("j");
+            palabra = strcat(palabra, 'J');
         case 11
-            disp("k");
+            palabra = strcat(palabra, 'K');
         case 12
-            disp("l");
+            palabra = strcat(palabra, 'L');
         case 13
-            disp("m");
+            palabra = strcat(palabra, 'M');
         case 14
-            disp("n");
+            palabra = strcat(palabra, 'N');
         case 15
-            disp("Ã±");
+            palabra = strcat(palabra, 'O');
         case 16
-            disp("o");
+            palabra = strcat(palabra, 'P');
         case 17
-            disp("p");
+            palabra = strcat(palabra, 'Q');
         case 18
-            disp("q");
+            palabra = strcat(palabra, 'R');
         case 19
-            disp("r");
+            palabra = strcat(palabra, 'S');
         case 20
-            disp("s");
+            palabra = strcat(palabra, 'T');
         case 21
-            disp("t");
+            palabra = strcat(palabra, 'U');
         case 22
-            disp("u");
+            palabra = strcat(palabra, 'V');
         case 23
-            disp("v");
+            palabra = strcat(palabra, 'W');
         case 24
-            disp("w");
+            palabra = strcat(palabra, 'X');
         case 25
-            disp("x");
+            palabra = strcat(palabra, 'Y');
         case 26
-            disp("y");
-        case 27
-            disp("z");
+            palabra = strcat(palabra, 'Z');
     end
 end
+
+% clc;
+display(palabra);
+
 

@@ -4,7 +4,7 @@
 %     - León Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
-function [imagenDelimitada] = SepararLetras(imagen_umbralizada, palabra)
+function [imagenDelimitada, ArrayLetras] = SepararLetras(imagen_umbralizada)
     %Rellenar agujeros
     imgRellenada = imfill(~imagen_umbralizada, 'holes');
     % figure; imshow(imgRellenada);
@@ -17,11 +17,14 @@ function [imagenDelimitada] = SepararLetras(imagen_umbralizada, palabra)
     stats = regionprops(imgSinRuido, 'BoundingBox');
 
     bbox = cat(1, stats.BoundingBox);
+    ArrayLetras = cell(size(stats, 1), 1);
     
-    mkdir(strcat('./salidas/', palabra, '/'));
+    % mkdir(strcat('./salidas/', palabra, '/'));
     for i = 1:size(stats)
         boundingBox = stats(i).BoundingBox; % [x, y, width, height]
         letra = imagen_umbralizada(boundingBox(2):boundingBox(2) + boundingBox(4) - 1, boundingBox(1):boundingBox(1) + boundingBox(3) - 1, :);
+        letra = imresize(letra, [512 512]);
+        ArrayLetras{i} = letra;
         % figure, imshow(letra);
         % imwrite(letra, strcat('./salidas/', palabra, '/', num2str(i), '.jpg'));
     end
