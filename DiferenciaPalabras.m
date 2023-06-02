@@ -21,9 +21,9 @@ ruta = './entradas/SOFTWARE.jpg';
 
 palabra = '';
 for i=1:size(arrayLetras, 1)
-    % imshow(~arrayLetras{i});
+    imshow(~arrayLetras{i});
     letra_f = Caracteristicas(~arrayLetras{i});
-    diferencia = zeros(size(valores, 1), 1);  % Inicializar diferencia en cada iteración del bucle externo
+    diferencia = zeros(size(valores, 1), 1);
     for j=1:size(valores, 1)
         diferencia(j) = sum(abs(valores(j, :) - letra_f));
     end

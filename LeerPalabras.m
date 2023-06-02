@@ -27,6 +27,7 @@ end
 for i=1:size(tamano_directorio, 1)
     for j=1:tamano_directorio(i)
         [letra, letra_BYN, letra_f] = LeerImgByN(strcat(ruta_palabras{i}, 'tipo', num2str(i+12), '_', num2str(j), '.png'), nivel, false);
+        imshow(letra);
 
         etiqueta = [i];
         caracteristicas = [letra_f];
