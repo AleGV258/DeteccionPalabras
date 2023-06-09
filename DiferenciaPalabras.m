@@ -1,7 +1,7 @@
-% Tópico II
+% Tï¿½pico II
 % Integrantes:
-%     - García Vargas Michell Alejandro
-%     - León Paulin Daniel
+%     - Garcï¿½a Vargas Michell Alejandro
+%     - Leï¿½n Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
 clc;
