@@ -1,11 +1,11 @@
-% Tópico II
+% Topico II
 % Integrantes:
-%     - García Vargas Michell Alejandro
-%     - León Paulin Daniel
+%     - Garcia Vargas Michell Alejandro
+%     - Leon Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
 function [imagenDelimitada, ArrayLetras] = SepararLetras(imagen_umbralizada)
-    %Rellenar agujeros
+    % Rellenar agujeros
     imgRellenada = imfill(~imagen_umbralizada, 'holes');
     % figure; imshow(imgRellenada);
 
@@ -18,7 +18,7 @@ function [imagenDelimitada, ArrayLetras] = SepararLetras(imagen_umbralizada)
 
     bbox = cat(1, stats.BoundingBox);
     ArrayLetras = cell(size(stats, 1), 1);
-    
+
     % mkdir(strcat('./salidas/', palabra, '/'));
     for i = 1:size(stats)
         boundingBox = stats(i).BoundingBox; % [x, y, width, height]
