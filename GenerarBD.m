@@ -4,9 +4,9 @@
 %     - Leon Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
-clc;
-clear all;
-close all;
+clc; % Limpia la consola
+clear all; % Limpia la memoria
+close all; % Cierra todas las ventanas abiertas
 
 memoria = [];
 
@@ -66,4 +66,4 @@ memoria = [];
 [memoria] = LeerImagenesBD(memoria, 51, 'entradas/letras/51/', 1, 24); %'Y' = 51
 [memoria] = LeerImagenesBD(memoria, 52, 'entradas/letras/52/', 1, 24); %'Z' = 52
 
-save('./BD/AbecedarioBD.mat', 'memoria');
+save('./bd/AbecedarioBD.mat', 'memoria');

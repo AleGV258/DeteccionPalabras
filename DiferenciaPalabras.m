@@ -4,28 +4,21 @@
 %     - Leon Paulin Daniel
 % Grupo: 30           8vo. Semestre
 
-clc;
-clear all;
-close all;
+clc; % Limpia la consola
+clear all; % Limpia la memoria
+close all; % Cierra todas las ventanas abiertas
 
-%% Diferenciar Letras %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+load('./bd/AbecedarioBD.mat');
 
-load('./BD/AbecedarioBD.mat');
-
-nivel = 0.4;
 valores = memoria;
-ruta = './entradas/palabrasCreadas/ABUELITO.jpg';
-% ruta = './entradas/HUMANO.jpg';
-
-[imagenDelimitada, arrayLetras] = SepararLetras(im2bw(imread(ruta), nivel));
+[imagenDelimitada, arrayLetras] = SepararLetras(im2bw(imread('./entradas/ABUELITO.jpg')));
 palabra = '';
 
 for i = 1:size(arrayLetras, 1)
     % imshow(~arrayLetras{i});
-    letraPalabra = imresize(padarray(~arrayLetras{i}, [0 0], 0, 'both'), [512 512]);
+    letraPalabra = imresize(arrayLetras{i}, [512 512]);
     letra_f = Caracteristicas(letraPalabra);
-    % diferencia = zeros(size(valores, 1), 1); % Inicializar diferencia en cada iteracion del bucle externo
-    diferencia = zeros(size(valores, 1), 2);
+    diferencia = zeros(size(valores, 1), 2); % Inicializar diferencia en cada iteracion del bucle externo
     
     for j = 1:size(valores, 1)
         diferencia(j, 1) = sum(abs(valores(j, 1:2) - letra_f));

@@ -30,5 +30,6 @@ function [imagenDelimitada, ArrayLetras] = SepararLetras(imagen_umbralizada)
     end
 
     imagenDelimitada = insertShape(im2uint8(imagen_umbralizada), 'rectangle', bbox, 'LineWidth', 4, 'Color', 'red');
-    figure, imshow(imagenDelimitada);
+    close all;
+    % figure, imshow(imagenDelimitada);
 end

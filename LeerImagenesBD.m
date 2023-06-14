@@ -7,9 +7,7 @@
 function [matriz] = LeerImagenesBD(matriz, etiqueta, path, inicioImagenes, finalImagenes)
     clc;
     for a = inicioImagenes:finalImagenes
-        imagen_original = imread([path, num2str(a), '.png']);
-        nivel = 0.4;
-        imagenBYN = ~im2bw(imagen_original, nivel);
+        imagenBYN = im2bw(imread([path, num2str(a), '.png']));
 
         % Rellenar agujeros
         imgRellenada = imfill(imagenBYN, 'holes');
@@ -26,7 +24,6 @@ function [matriz] = LeerImagenesBD(matriz, etiqueta, path, inicioImagenes, final
         for i = 1:size(stats)
             boundingBox = stats(i).BoundingBox; % [x, y, width, height]
             letra = imagenBYN(boundingBox(2):boundingBox(2) + boundingBox(4) - 1, boundingBox(1):boundingBox(1) + boundingBox(3) - 1, :);
-            letra = imresize(letra, [512 512]);
         end
 
         imagenDelimitada = insertShape(im2uint8(imagenBYN), 'rectangle', bbox, 'LineWidth', 4, 'Color', 'red');
@@ -35,8 +32,11 @@ function [matriz] = LeerImagenesBD(matriz, etiqueta, path, inicioImagenes, final
         if exist('letra', 'var') == 0
             letra = imresize(imagenBYN, [512 512]);
         end
-
         % imshow(letra);
-        matriz(size(matriz, 1) + 1, :) = [Caracteristicas(letra), etiqueta];
+        
+        [x, letraDelimitada] = SepararLetras(letra);
+        % imshow(letraDelimitada{1});
+
+        matriz(size(matriz, 1) + 1, :) = [Caracteristicas(letraDelimitada{1}), etiqueta];
     end
 end
